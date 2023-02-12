@@ -23,7 +23,10 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script # run main.py
-        run: python meteo.py
+        run: |
+           python meteo.py
+           echo "::set-env name=TEMPERATURE::$(cat meteo.txt | grep TEMPERATURE | cut -d= -f2)"
+           echo "::set-env name=HUMIDITY::$(cat meteo.txt | grep HUMIDITY | cut -d= -f2)"
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
           TEMPERATURE: ${{ env.TEMPERATURE }}
