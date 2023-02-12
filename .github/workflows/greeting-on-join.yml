@@ -1,1 +1,24 @@
+name: Greeting Workflow
 
+on:
+  member:
+    types: [added]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Greet New Member
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const octokit = require('@octokit/rest')({ auth: process.env.GITHUB_TOKEN });
+          const member = context.payload.membership.member;
+          octokit.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: `Welcome ${member.login}!`,
+            body: `Hello ${member.login}! Welcome to the project. Let us know if you need any help getting started.`
+          });
