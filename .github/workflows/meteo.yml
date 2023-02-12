@@ -23,13 +23,11 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script # run main.py
+        run: python meteo.py
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
           TEMPERATURE: ${{ env.TEMPERATURE }}
           HUMIDITY: ${{ env.HUMIDITY }}
-        run: python meteo.py
-             echo ${{ env.TEMPERATURE }}
-
   
       - name: commit files
         run: |
