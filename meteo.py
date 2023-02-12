@@ -33,4 +33,16 @@ if __name__ == "__main__":
         temperature = data["forecast"]["temp"]
         ressenti = data["forecast"]['feels_like']
         humidity = data['forecast']['humidity']
+        
+        os.environ["TEMPERATURE"] = str(temperature)
+        os.environ["HUMIDITY"] = str(humidity)
+        os.environ['FEELS_LIKE'] = str(ressenti)
+
+        if ressenti > 35 :
+            os.environ["WEATHER_COMMENT"] = "Que calor ! Il fait chaud hydratez vous."
+        elif ressenti <= 28 :
+            os.environ["WEATHER_COMMENT"] = "Il fait doux aujourd'hui profitez de la journee"
+        else : 
+            os.environ["WEATHER_COMMENT"] = "C'est mieux que certaines fois :]"
+            
         logger.info(f'Weather in Douala: {temperature}')
