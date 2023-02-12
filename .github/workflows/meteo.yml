@@ -1,8 +1,8 @@
 name: run meteo.py
 
-on:
-  schedule:
-    - cron: '* */4 * * *' # At 00:00 on Monday
+on: [push]
+#   schedule:
+#     - cron: '* * * * *' # At 00:00 on Monday
 
 jobs:
   build:
