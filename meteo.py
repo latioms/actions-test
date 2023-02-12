@@ -45,4 +45,7 @@ if __name__ == "__main__":
         else : 
             os.environ["WEATHER_COMMENT"] = "C'est mieux que certaines fois :]"
             
+        with open("meteo.txt", "w") as f:
+            f.write("TEMPERATURE={}\nHUMIDITY={}".format(temperature, humidity))
+            
         logger.info(f'Weather in Douala: {temperature}')
