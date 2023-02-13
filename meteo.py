@@ -44,6 +44,6 @@ if __name__ == "__main__":
             comment = "C'est mieux que certaines fois :]"
             
         with open("meteo.txt", "w") as f:
-            f.write("TEMPERATURE={}\nHUMIDITY={}\nWEATHER_COMMENT={}".format(temperature, humidity, comment))
+            f.write("TEMPERATURE={}\nHUMIDITY={}\nFEELS_LIKE={}".format(temperature, humidity, ressenti))
             
         logger.info(f'Weather in Douala: {temperature}')
