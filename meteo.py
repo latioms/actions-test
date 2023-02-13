@@ -31,7 +31,7 @@ if __name__ == "__main__":
     if r.status_code == 200:
         data = r.json()
         temperature = data["forecast"]["temp"]
-        ressenti = data["forecast"]['feels_like']
+        ressenti = data["forecast"]["feels_like"]
         humidity = data['forecast']['humidity']
         
         comment = " "
