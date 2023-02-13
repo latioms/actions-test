@@ -27,7 +27,7 @@ jobs:
            python meteo.py
            echo "TEMPERATURE=$(cat meteo.txt | grep TEMPERATURE | cut -d= -f2)" >> $GITHUB_ENV
            echo "HUMIDITY=$(cat meteo.txt | grep HUMIDITY | cut -d= -f2)" >> $GITHUB_ENV
-  
+           echo  "WEATHER_COMMENT=$(grep -oP "(?<=WEATHER_COMMENT=).*" meteo.txt)" >> $GITHUB_ENV
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
@@ -41,4 +41,6 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            La temerature est de ${{ env.TEMPERATURE }}
+            La temperature est de ${{ env.TEMPERATURE }}
+            L'humidite est de ${{ env.HUMIDITY }}
+            ${{ WEATHER_COMMENT }}
