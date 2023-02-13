@@ -39,7 +39,7 @@ if __name__ == "__main__":
         if ressenti > 35 :
             comment = "Que calor ! Il fait chaud hydratez vous."
         elif ressenti <= 28 :
-            comment = "Il fait doux aujourd'hui profitez de la journee"
+            comment = "Il fait doux actuellement profitez de la journee"
         else : 
             comment = "C'est mieux que certaines fois :]"
             
