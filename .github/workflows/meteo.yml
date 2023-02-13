@@ -43,4 +43,4 @@ jobs:
           message: |
             La temperature est de ${{ env.TEMPERATURE }}
             L'humidite est de ${{ env.HUMIDITY }}
-            Le ressenti est donc de {{ env.FEELS_LIKE }}
+            Le ressenti est donc de ${{ env.FEELS_LIKE }}
