@@ -28,6 +28,7 @@ jobs:
            echo "TEMPERATURE=$(cat meteo.txt | grep TEMPERATURE | cut -d= -f2)" >> $GITHUB_ENV
            echo "HUMIDITY=$(cat meteo.txt | grep HUMIDITY | cut -d= -f2)" >> $GITHUB_ENV
            echo  "FEELS_LIKE=$(cat meteo.txt | grep FEELS_LIKE | cut -d= -f2)" >> $GITHUB_ENV
+           echo "COMMENT=$(grep -oP "(?<=COMMENT=).*" meteo.txt)"
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
@@ -44,3 +45,4 @@ jobs:
             La temperature est de ${{ env.TEMPERATURE }}
             L'humidite est de ${{ env.HUMIDITY }}
             Le ressenti est donc de ${{ env.FEELS_LIKE }}
+            ${{ env.COMMENT }}
