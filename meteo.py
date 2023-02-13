@@ -34,16 +34,16 @@ if __name__ == "__main__":
         ressenti = data["forecast"]['feels_like']
         humidity = data['forecast']['humidity']
         
-        WEATHER_COMMENT = " "
+        comment = " "
         
         if ressenti > 35 :
-            WEATHER_COMMENT = "Que calor ! Il fait chaud hydratez vous."
+            comment = "Que calor ! Il fait chaud hydratez vous."
         elif ressenti <= 28 :
-            WEATHER_COMMENT = "Il fait doux aujourd'hui profitez de la journee"
+            comment = "Il fait doux aujourd'hui profitez de la journee"
         else : 
-            WEATHER_COMMENT = "C'est mieux que certaines fois :]"
+            comment = "C'est mieux que certaines fois :]"
             
         with open("meteo.txt", "w") as f:
-            f.write("TEMPERATURE={}\nHUMIDITY={}\nWEATHER_COMMENT={}".format(temperature, humidity,WEATHER_COMMENT))
+            f.write("TEMPERATURE={}\nHUMIDITY={}\nWEATHER_COMMENT={}".format(temperature, humidity, comment))
             
         logger.info(f'Weather in Douala: {temperature}')
