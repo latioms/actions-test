@@ -27,7 +27,7 @@ jobs:
            python meteo.py
            echo "TEMPERATURE=$(cat meteo.txt | grep TEMPERATURE | cut -d= -f2)" >> $GITHUB_ENV
            echo "HUMIDITY=$(cat meteo.txt | grep HUMIDITY | cut -d= -f2)" >> $GITHUB_ENV
-           echo  "WEATHER_COMMENT=$(grep -oP "(?<=WEATHER_COMMENT=).*" meteo.txt)" >> $GITHUB_ENV
+           echo  "WEATHER_COMMENT=$(cat meteo.txt | awk -F "WEATHER_COMMENT=" '{print $2}' meteo.txt)" >> $GITHUB_ENV
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
